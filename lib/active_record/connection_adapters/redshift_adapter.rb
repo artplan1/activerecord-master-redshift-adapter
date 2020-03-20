@@ -302,6 +302,11 @@ module ActiveRecord
         false
       end
 
+      # Does this adapter support datetime with precision?
+      def supports_datetime_with_precision?
+        true
+      end
+
       # Returns the configured supported identifier length supported by PostgreSQL
       def table_alias_length
         @table_alias_length ||= query('SHOW max_identifier_length', 'SCHEMA')[0][0].to_i
@@ -632,8 +637,8 @@ module ActiveRecord
           $1.strip if $1
         end
 
-        def create_table_definition(*args) # :nodoc:
-          Redshift::TableDefinition.new(*args)
+        def create_table_definition(name, *args) # :nodoc:
+          Redshift::TableDefinition.new(self, name, *args)
         end
     end
   end
