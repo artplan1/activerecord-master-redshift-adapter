@@ -304,7 +304,7 @@ module ActiveRecord
 
       # Does this adapter support datetime with precision?
       def supports_datetime_with_precision?
-        true
+        false
       end
 
       # Returns the configured supported identifier length supported by PostgreSQL
