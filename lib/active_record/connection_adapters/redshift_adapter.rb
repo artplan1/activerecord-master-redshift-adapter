@@ -235,7 +235,13 @@ module ActiveRecord
         unless @connection.transaction_status == ::PG::PQTRANS_IDLE
           @connection.query 'ROLLBACK'
         end
-        @connection.query 'DISCARD ALL'
+
+        pids = @connection.query('SELECT DISTINCT pid FROM svv_transactions')[0]
+        unless pids.try(:length).nil?
+          pids.each do |pid|
+            @connection.query("SELECT pg_terminate_backend(#{pid})") rescue nil
+          end
+        end
         configure_connection
       end
 
