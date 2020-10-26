@@ -1,7 +1,7 @@
 module ActiveRecord
   module ConnectionAdapters
     module Redshift
-      class SchemaCreation < AbstractAdapter::SchemaCreation
+      class SchemaCreation < SchemaCreation
         private
 
         def visit_ColumnDefinition(o)
@@ -159,7 +159,7 @@ module ActiveRecord
         end
 
         def new_column(name, default, sql_type_metadata = nil, null = true, table_name = nil, default_function = nil) # :nodoc:
-          RedshiftColumn.new(name, default, sql_type_metadata, null, default_function)
+          Column.new(name, default, sql_type_metadata, null, default_function)
         end
 
         # Returns the current database name.

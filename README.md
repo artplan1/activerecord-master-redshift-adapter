@@ -1,18 +1,16 @@
-activerecord6-redshift-adapter
-==============================
+# activerecord-master-redshift-adapter
 
-Amazon Redshift adapter for ActiveRecord 6 (Rails 6).
-I forked the project from https://github.com/ConsultingMD/activerecord5-redshift-adapter
+Amazon Redshift adapter for ActiveRecord from master.
+I forked the project from <https://github.com/ChmlGr/activerecord6-redshift-adapter>
 
 Thanks for the auhors.
 
-Usage
--------------------
+## Usage
 
-For Rails 6, write following in Gemfile:
+Write following in Gemfile:
 
 ```ruby
-gem 'activerecord6-redshift-adapter', git: 'https://github.com/akagr/activerecord6-redshift-adapter', branch: 'master'
+gem 'activerecord-master-redshift-adapter', git: 'https://github.com/artplan1/activerecord-master-redshift-adapter', branch: 'master'
 ```
 
 In database.yml
@@ -29,13 +27,13 @@ development:
 ```
 
 OR your can use in URL
+
 ```ruby
 class SomeModel < ApplicationRecord
   establish_connection('redshift://username:password@host/database')
 end
 ```
 
-License
----------
+## License
 
 MIT license (same as ActiveRecord)
